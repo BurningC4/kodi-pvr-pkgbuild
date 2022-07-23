@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.filmon.tar.gz::https://github.com/kodi-pvr/pvr.filmon/archive/4c84f36fb9962f84030613e56419f764a17ad76d.tar.gz")
-sha512sums=('71dcb7c03e300cef2e6ee96e9f2c571259207f2befe2295ed8888a87848c4305fc8a100eaa36b2bf2c40d937983c5740c3ddfab0b354676e9b46036cb441f5d0')
+sha512sums=('')
 
 _prefix='/usr'
 

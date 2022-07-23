@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.mediaportal.tvserver.tar.gz::https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/e3f58df254c6c428ae4c75a8e7059f0a96dbe4a7.tar.gz")
-sha512sums=('0e8c2ee43f8232e4f9d3e8e7b0487ecf6beda22e38bf5c52c3c0eabde9da8e85cdb43625923fb0cdda00c25789c5f8ee28217862ab5951fd068b6ee7210c986d')
+sha512sums=('')
 
 _prefix='/usr'
 

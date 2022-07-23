@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.vdr.vnsi.tar.gz::https://github.com/kodi-pvr/pvr.vdr.vnsi/archive/c4c9a5c4edd212462af4465246183ef2fc9993a9.tar.gz")
-sha512sums=('4909091cc2b5e935d728607f3b66162cfe4ed98f7fc621ce1921bab90a390e0c5c64f73389add161a872d62c2bf3da6d09a7db282b39e066d77320a62a66ccdd')
+sha512sums=('')
 
 _prefix='/usr'
 

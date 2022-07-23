@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.hdhomerun.tar.gz::https://github.com/kodi-pvr/pvr.hdhomerun/archive/1eaab85a5992a433ab49ecb6d9f0f43074aa5a53.tar.gz")
-sha512sums=('6a0252af4163a661380197afb4cdb1fd1380aa4c6ccffd4736111529701c7985d91fdd1d488901e303824dd25494e51fa95a4d16fb1c2f25ef622b514bf54c09')
+sha512sums=('')
 
 _prefix='/usr'
 
