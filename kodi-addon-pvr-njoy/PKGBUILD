@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.njoy.tar.gz::https://github.com/kodi-pvr/pvr.njoy/archive/94bdbabbd2f6dd6087697e1b723a12421639336c.tar.gz")
-sha512sums=('')
+sha512sums=('f2e9a636cb760c47b14e21bdd5c3575a8a54000f8eb03930a916f849fce949790fe78bf78e80828572f3e9c5929aa3d4b771cfed9e3cbe80f7c20949edc3248d')
 
 _prefix='/usr'
 

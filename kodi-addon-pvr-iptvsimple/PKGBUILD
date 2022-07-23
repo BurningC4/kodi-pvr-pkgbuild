@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.iptvsimple.tar.gz::https://github.com/kodi-pvr/pvr.iptvsimple/archive/7644bad7f17efe903433ac99342a37db37e1f30b.tar.gz")
-sha512sums=('')
+sha512sums=('386353be05359694b77bff72f2d327b79ac194e68b9b198e3b362077e275181de990d9187a8c2881611257d9378bcf552813ab4b2dc14f376a1965c6c7ff7c01')
 
 _prefix='/usr'
 

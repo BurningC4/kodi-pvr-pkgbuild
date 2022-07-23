@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.wmc.tar.gz::https://github.com/kodi-pvr/pvr.wmc/archive/b14421341163c5e59d549c9c996cfb1825d3b28d.tar.gz")
-sha512sums=('')
+sha512sums=('7381456b29d00e536551bf8ee46e2d687a5ddec6016ba850ecdd6b402cf99fba1a7f58278f30d1c08c789552381c41bf0371ebc79f6eefffaa96ffdd6807e6f3')
 
 _prefix='/usr'
 

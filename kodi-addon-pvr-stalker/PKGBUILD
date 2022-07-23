@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.stalker.tar.gz::https://github.com/kodi-pvr/pvr.stalker/archive/67ccb3384e33f133792960604491cc12a27d34a9.tar.gz")
-sha512sums=('')
+sha512sums=('e91f1a2e8d55ddfe73cc299ab5e0ed58a0008765e29b091e49e6b159e9d2ce8e1aa55c460ca4e6c50b06b3ccea3e3cdf4ada5a34f97121ba782e51e22d73a8a8')
 
 _prefix='/usr'
 

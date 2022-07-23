@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.nextpvr.tar.gz::https://github.com/kodi-pvr/pvr.nextpvr/archive/e1e2e53d1c52757c2bf9a6f89028be112b629f46.tar.gz")
-sha512sums=('')
+sha512sums=('bb22b0cbcd690af7f4f541d7cd7c014fbe9189964866fbb53983409fa2e4b4d3a948d896241e609da6129eb40cd025eaab776b8505faf16790499ac01bc97e37')
 
 _prefix='/usr'
 

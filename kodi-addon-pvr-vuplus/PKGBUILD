@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.vuplus.tar.gz::https://github.com/kodi-pvr/pvr.vuplus/archive/7aaff8b1a35480080f56b0d36306c293dafb5914.tar.gz")
-sha512sums=('')
+sha512sums=('d64712694e246b874e67326f8d6130f7f5539bd562fb87872c900e44d41711d4777b074e4367bed5cde74ecf72f8bd5bc307a24d131b6eb5e6db333f30be32ca')
 
 _prefix='/usr'
 
