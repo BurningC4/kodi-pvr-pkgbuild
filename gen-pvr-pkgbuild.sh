@@ -14,9 +14,9 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
   OLD_GITVER=$(curl -sL https://github.com/BurningC4/kodi-pvr-pkgbuild/raw/release/$PKGNAME/PKGBUILD | grep source | grep https | sed "s/.*archive\///g" | sed "s/\.tar.gz.*//g")
   if [[ $GITVER ]];then
     mkdir -p temp/$PKGNAME
+    PKGVER=$(curl -sL https://github.com/kodi-pvr/$REPONAME/raw/$KODI_RELEASE/$REPONAME/addon.xml.in | grep "\s\sversion=" | sed "s/.*=\"//g" | sed "s/\".*//g")
+    echo $PKGVER > temp/$PKGNAME/PKGVER
     if [[ $OLD_GITVER != $GITVER ]]; then
-      PKGVER=$(curl -sL https://github.com/kodi-pvr/$REPONAME/raw/$KODI_RELEASE/$REPONAME/addon.xml.in | grep "\s\sversion=" | sed "s/.*=\"//g" | sed "s/\".*//g")
-      echo $PKGVER > temp/$PKGNAME/PKGVER
       echo "$PKGNAME has new version!"
       OLD_PKGVER=$(curl -sL https://github.com/BurningC4/kodi-pvr-pkgbuild/raw/release/$PKGNAME/PKGBUILD | grep "pkgver=" | sed "s/pkgver=//g")
       if [[ $PKGVER == $OLD_PKGVER ]]; then
@@ -29,6 +29,7 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
       fi
     else
       echo "$PKGNAME is up to date!"
+      PKGREL=1
       PKGREL=$OLD_PKGREL
       echo $PKGREL > temp/$PKGNAME/PKGREL
     fi
