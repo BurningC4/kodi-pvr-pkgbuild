@@ -38,5 +38,4 @@ jobs:
           BRANCH: release
           FOLDER: release
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SKIP_EMPTY_COMMITS: true
           MESSAGE: auto update at ${{ env.UPDATE_TIME }}
