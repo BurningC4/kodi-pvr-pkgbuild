@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-plutotv
 pkgbase=${pkgname}
-pkgver=19.0.3
-pkgrel=1
+pkgver=
+pkgrel=
 pkgdesc="Pluto.tv PVR Client for Kodi"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.plutotv"

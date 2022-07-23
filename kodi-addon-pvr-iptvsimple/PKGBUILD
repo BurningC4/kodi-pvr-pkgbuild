@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-iptvsimple
 pkgbase=${pkgname}
-pkgver=19.1.1
-pkgrel=1
+pkgver=
+pkgrel=
 pkgdesc="Kodi: IPTV Simple client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.iptvsimple"

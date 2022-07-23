@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-argustv
 pkgbase=${pkgname}
-pkgver=19.2.1
-pkgrel=1
+pkgver=
+pkgrel=
 pkgdesc="Kodi's ARGUS TV client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.argustv"
