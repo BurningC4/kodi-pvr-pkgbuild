@@ -3,7 +3,7 @@ name: generate Arch Linux PKGBUILD files for kodi pvr addons
 on: 
   workflow_dispatch:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '0 0 * * *'
   push:
     branches:
       - master
