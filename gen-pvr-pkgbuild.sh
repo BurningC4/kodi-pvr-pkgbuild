@@ -44,4 +44,5 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
   echo $PKGNAME now $PKGVER-$PKGREL
   cat PKGBUILD.txt | sed "s/_PKGNAME_/$PKGNAME/g" | sed "s/_PKGVER_/$PKGVER/g" | sed "s/_PKGREL_/$PKGREL/g" | sed "s/_DESCRIPTION_/$DESCRIPTION/g" | sed "s/_REPONAME_/$REPONAME/g" | sed "s/_GITVER_/$GITVER/g" | sed "s/_SHA512_/$SHA512/g" > release/$PKGNAME/PKGBUILD
 done
+ls -R temp
 popd > /dev/null
