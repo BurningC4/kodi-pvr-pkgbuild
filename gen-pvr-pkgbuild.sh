@@ -30,7 +30,7 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
     else
       echo "$PKGNAME is up to date!"
       PKGREL=1
-      PKGREL=$OLD_PKGREL
+      #PKGREL=$OLD_PKGREL
       echo $PKGREL > temp/$PKGNAME/PKGREL
     fi
     mkdir -p release/$PKGNAME
