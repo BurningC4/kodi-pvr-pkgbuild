@@ -29,8 +29,7 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
       fi
     else
       echo "$PKGNAME is up to date!"
-      PKGREL=1
-      #PKGREL=$OLD_PKGREL
+      PKGREL=$OLD_PKGREL
       echo $PKGREL > temp/$PKGNAME/PKGREL
     fi
     mkdir -p release/$PKGNAME
@@ -45,5 +44,4 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
   echo $PKGNAME now is $PKGVER-$PKGREL
   cat PKGBUILD.txt | sed "s/_PKGNAME_/$PKGNAME/g" | sed "s/_PKGVER_/$PKGVER/g" | sed "s/_PKGREL_/$PKGREL/g" | sed "s/_DESCRIPTION_/$DESCRIPTION/g" | sed "s/_REPONAME_/$REPONAME/g" | sed "s/_GITVER_/$GITVER/g" | sed "s/_SHA512_/$SHA512/g" > release/$PKGNAME/PKGBUILD
 done
-ls -R temp
 popd > /dev/null
