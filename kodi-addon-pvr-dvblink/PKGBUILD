@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-dvblink
+pkgbase=${pkgname}
+pkgver=19.0.1
+pkgrel=1
+pkgdesc="Kodi's DVBLink client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.dvblink"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.dvblink.tar.gz::https://github.com/kodi-pvr/pvr.dvblink/archive/59a1efa9aaa952b3d2f6e55cdd486801d7cfb798.tar.gz")
+sha512sums=('f6eb6e900b30bb284c6ff5e4d88bd8789991c487cd05d05120a4ead33901c3f3452b68576ae86536ae7bfe43d9f2d8dd2f2fc3e5650fba8b509598e0454379f7')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.dvblink-59a1efa9aaa952b3d2f6e55cdd486801d7cfb798"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.dvblink-59a1efa9aaa952b3d2f6e55cdd486801d7cfb798/build"
+  make DESTDIR="$pkgdir" install
+}

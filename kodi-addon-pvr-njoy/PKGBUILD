@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-njoy
+pkgbase=${pkgname}
+pkgver=19.0.1
+pkgrel=1
+pkgdesc="Kodi's Njoy N7 client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.njoy"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.njoy.tar.gz::https://github.com/kodi-pvr/pvr.njoy/archive/94bdbabbd2f6dd6087697e1b723a12421639336c.tar.gz")
+sha512sums=('f2e9a636cb760c47b14e21bdd5c3575a8a54000f8eb03930a916f849fce949790fe78bf78e80828572f3e9c5929aa3d4b771cfed9e3cbe80f7c20949edc3248d')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.njoy-94bdbabbd2f6dd6087697e1b723a12421639336c"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.njoy-94bdbabbd2f6dd6087697e1b723a12421639336c/build"
+  make DESTDIR="$pkgdir" install
+}

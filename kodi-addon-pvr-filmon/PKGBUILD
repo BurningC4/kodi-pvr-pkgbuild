@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-filmon
+pkgbase=${pkgname}
+pkgver=19.0.1
+pkgrel=1
+pkgdesc="Kodi's Filmon client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.filmon"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.filmon.tar.gz::https://github.com/kodi-pvr/pvr.filmon/archive/4c84f36fb9962f84030613e56419f764a17ad76d.tar.gz")
+sha512sums=('71dcb7c03e300cef2e6ee96e9f2c571259207f2befe2295ed8888a87848c4305fc8a100eaa36b2bf2c40d937983c5740c3ddfab0b354676e9b46036cb441f5d0')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.filmon-4c84f36fb9962f84030613e56419f764a17ad76d"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.filmon-4c84f36fb9962f84030613e56419f764a17ad76d/build"
+  make DESTDIR="$pkgdir" install
+}

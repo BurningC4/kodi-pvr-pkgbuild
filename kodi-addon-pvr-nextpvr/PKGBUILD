@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-nextpvr
+pkgbase=${pkgname}
+pkgver=19.0.3
+pkgrel=1
+pkgdesc="Kodi's NextPVR client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.nextpvr"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.nextpvr.tar.gz::https://github.com/kodi-pvr/pvr.nextpvr/archive/e1e2e53d1c52757c2bf9a6f89028be112b629f46.tar.gz")
+sha512sums=('bb22b0cbcd690af7f4f541d7cd7c014fbe9189964866fbb53983409fa2e4b4d3a948d896241e609da6129eb40cd025eaab776b8505faf16790499ac01bc97e37')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.nextpvr-e1e2e53d1c52757c2bf9a6f89028be112b629f46"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.nextpvr-e1e2e53d1c52757c2bf9a6f89028be112b629f46/build"
+  make DESTDIR="$pkgdir" install
+}
