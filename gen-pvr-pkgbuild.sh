@@ -33,7 +33,7 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
       PKGREL=$OLD_PKGREL
       echo $PKGREL > temp/$PKGNAME/PKGREL
     fi
-    mkdir -p release/$PKGNAME temp/$PKGNAME
+    mkdir -p release/$PKGNAME
     curl -sLo temp/$PKGNAME/$REPONAME.tar.gz https://github.com/kodi-pvr/"$REPONAME"/archive/"$GITVER".tar.gz
     SHA512=$(sha512sum temp/$PKGNAME/$REPONAME.tar.gz | sed "s/  .*//g")
   else
