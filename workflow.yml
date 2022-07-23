@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: set variables
         run: |
-          echo "UPDATE_TIME=$(date +%Y-%m-%d\ %H:%M\ %Z)" >> $GITHUB_ENV
+          echo "UPDATE_TIME=$(date +%Y-%m-%d)" >> $GITHUB_ENV
       - name: prepare scripts
         uses: actions/checkout@v2
         with: 
