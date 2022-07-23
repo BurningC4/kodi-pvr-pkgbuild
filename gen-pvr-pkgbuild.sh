@@ -11,14 +11,14 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
   DESCRIPTION=$(cat temp/repos.json | jq -r ".[] | select(.name == \"$REPONAME\") | .description" | sed "s/http.*//g" | sed "s/[ \t]*$//g")
   PKGNAME=kodi-addon-$(echo $REPONAME | sed "s/\./-/g")
   GITVER=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/kodi-pvr/$REPONAME/branches | jq -r ".[] | select(.name == \"$KODI_RELEASE\") | .commit.sha")
-  OLD_GITVER=$(curl -sL https://github.com/BurningC4/kodi-pvr-pkgbuild/raw/release/$PKGNAME/PKGBUILD | grep source | grep https | sed "s/archieve\///g" | sed "s/\".*//g")
+  OLD_GITVER=$(curl -sL https://github.com/BurningC4/kodi-pvr-pkgbuild/raw/release/$PKGNAME/PKGBUILD | grep source | grep https | sed "s/.*archive\///g" | sed "s/\.tar.gz.*//g")
   if [[ $GITVER ]];then
     if [[ $OLD_GITVER != $GITVER ]]; then
       PKGVER=$(curl -sL https://github.com/kodi-pvr/$REPONAME/raw/$KODI_RELEASE/$REPONAME/addon.xml.in | grep "\s\sversion=" | sed "s/.*=\"//g" | sed "s/\".*//g")
+      echo "$PKGNAME has new version!"
       OLD_PKGVER=$(curl -sL https://github.com/BurningC4/kodi-pvr-pkgbuild/raw/release/$PKGNAME/PKGBUILD | grep "pkgver=" | sed "s/pkgver=//g")
       if [[ $PKGVER == $OLD_PKGVER ]]; then
         OLD_PKGREL=$(curl -sL https://github.com/BurningC4/kodi-pvr-pkgbuild/raw/release/$PKGNAME/PKGBUILD | grep "pkgrel=" | sed "s/pkgrel=//g")
-        echo "$PKGNAME has new version!"
         PKGREL=$(($OLD_PKGREL+1))
       else
         PKGREL=1
