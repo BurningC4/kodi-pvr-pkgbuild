@@ -18,22 +18,22 @@ for REPONAME in $(cat temp/repos.json | jq -r .[].name | grep -v "pvr-scripts") 
       OLD_PKGVER=$(curl -sL https://github.com/BurningC4/kodi-pvr-pkgbuild/raw/release/$PKGNAME/PKGBUILD | grep "pkgver=" | sed "s/pkgver=//g")
       if [[ $PKGVER == $OLD_PKGVER ]]; then
         OLD_PKGREL=$(curl -sL https://github.com/BurningC4/kodi-pvr-pkgbuild/raw/release/$PKGNAME/PKGBUILD | grep "pkgrel=" | sed "s/pkgrel=//g")
+        echo "$PKGNAME has new version!"
         PKGREL=$(($OLD_PKGREL+1))
       else
         PKGREL=1
       fi
     else
-      echo $PKGNAME is up to date!
-      continue
+      echo "$PKGNAME is up to date!"
+      PKGREL=$OLD_PKGREL
     fi
     mkdir -p release/$PKGNAME temp/$PKGNAME
     curl -sLo temp/$PKGNAME/$REPONAME.tar.gz https://github.com/kodi-pvr/"$REPONAME"/archive/"$GITVER".tar.gz
     SHA512=$(sha512sum temp/$PKGNAME/$REPONAME.tar.gz | sed "s/  .*//g")
   else
-    echo "$REPONAME has no branch for KODI $KODI_RELEASE. Won't generate/upgrade."
+    echo "$REPONAME has no branch for KODI $KODI_RELEASE. Won't generate/upgrade and will be deleted."
     continue
   fi
-  echo $PKGNAME has new version! Generating PKGBUILD for $PKGNAME...
   cat PKGBUILD.txt | sed "s/_PKGNAME_/$PKGNAME/g" | sed "s/_PKGVER_/$PKGVER/g" | sed "s/_PKGREL_/$PKGREL/g" | sed "s/_DESCRIPTION_/$DESCRIPTION/g" | sed "s/_REPONAME_/$REPONAME/g" | sed "s/_GITVER_/$GITVER/g" | sed "s/_SHA512_/$SHA512/g" > release/$PKGNAME/PKGBUILD
 done
 popd > /dev/null
