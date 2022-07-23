@@ -1,0 +1,41 @@
+name: generate Arch Linux PKGBUILD files for kodi pvr addons
+
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '30 * * * *'
+  push:
+    branches:
+      - master
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: set variables
+        run: |
+          echo "UPDATE_TIME=$(date +%Y-%m-%d\ %H:%M\ %Z)" >> $GITHUB_ENV
+
+      - name: prepare scripts
+        uses: actions/checkout@v2
+        with: 
+          ref: master
+
+      - name: generate PKGBUILD
+        run: |
+          bash gen-pvr-pkgbuild.sh
+
+      - name: add license
+        run: |
+          curl -sLo release/LICENSE https://www.gnu.org/licenses/gpl-3.0.txt
+
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: release
+          FOLDER: release
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SKIP_EMPTY_COMMITS: true
+          MESSAGE: auto update at ${{ env.UPDATE_TIME }}
