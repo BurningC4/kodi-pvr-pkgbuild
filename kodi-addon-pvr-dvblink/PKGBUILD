@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-dvblink
 pkgbase=${pkgname}
 pkgver=19.0.1
-pkgrel=
+pkgrel=1
 pkgdesc="Kodi's DVBLink client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.dvblink"
