@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-stalker
 pkgbase=${pkgname}
-pkgver=
+pkgver=19.0.3
 pkgrel=
 pkgdesc="A PVR Client that connects Kodi to Stalker Middleware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

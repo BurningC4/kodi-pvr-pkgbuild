@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-filmon
 pkgbase=${pkgname}
-pkgver=
+pkgver=19.0.1
 pkgrel=
 pkgdesc="Kodi's Filmon client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

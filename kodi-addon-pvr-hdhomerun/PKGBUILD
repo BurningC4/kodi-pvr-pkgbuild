@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-hdhomerun
 pkgbase=${pkgname}
-pkgver=
+pkgver=19.1.0
 pkgrel=
 pkgdesc="Kodi's HDHomeRun client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

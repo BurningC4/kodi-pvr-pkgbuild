@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-dvbviewer
 pkgbase=${pkgname}
-pkgver=
+pkgver=19.1.0
 pkgrel=
 pkgdesc="Kodi's DVBViewer client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

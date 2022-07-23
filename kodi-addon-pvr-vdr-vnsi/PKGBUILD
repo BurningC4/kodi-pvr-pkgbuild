@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-vdr-vnsi
 pkgbase=${pkgname}
-pkgver=
+pkgver=19.0.5
 pkgrel=
 pkgdesc="Kodi PVR addon VNSI"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
