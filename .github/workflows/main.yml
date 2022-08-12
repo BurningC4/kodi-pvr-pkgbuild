@@ -37,5 +37,5 @@ jobs:
           REPO: self
           BRANCH: release
           FOLDER: release
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
           MESSAGE: auto update at ${{ env.UPDATE_TIME }}
