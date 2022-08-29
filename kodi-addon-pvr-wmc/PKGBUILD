@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-wmc
 pkgbase=${pkgname}
 pkgver=19.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kodi's Windows Media Center client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.wmc"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.wmc.tar.gz::https://github.com/kodi-pvr/pvr.wmc/archive/b14421341163c5e59d549c9c996cfb1825d3b28d.tar.gz")
-sha512sums=('7381456b29d00e536551bf8ee46e2d687a5ddec6016ba850ecdd6b402cf99fba1a7f58278f30d1c08c789552381c41bf0371ebc79f6eefffaa96ffdd6807e6f3')
+source=("pvr.wmc.tar.gz::https://github.com/kodi-pvr/pvr.wmc/archive/4edf2f9ee1737663224ac100c06cd349776a87c3.tar.gz")
+sha512sums=('5258a46c1d22ae1320e65c44f53da0b3c3e0ce1d6a5d0310d01248c0194e2e3c2848b4335b13258e2b6a47d29d2ff675371656018afdd2ca774f6b798f605d11')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.wmc-b14421341163c5e59d549c9c996cfb1825d3b28d"
+  cd "$srcdir/pvr.wmc-4edf2f9ee1737663224ac100c06cd349776a87c3"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.wmc-b14421341163c5e59d549c9c996cfb1825d3b28d/build"
+  cd "$srcdir/pvr.wmc-4edf2f9ee1737663224ac100c06cd349776a87c3/build"
   make DESTDIR="$pkgdir" install
 }
