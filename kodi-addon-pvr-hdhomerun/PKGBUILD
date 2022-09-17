@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-hdhomerun
 pkgbase=${pkgname}
 pkgver=19.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Kodi's HDHomeRun client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.hdhomerun"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.hdhomerun.tar.gz::https://github.com/kodi-pvr/pvr.hdhomerun/archive/615235927e19e5b4252b100467fe99f71c95c528.tar.gz")
-sha512sums=('5f8b348a0b946ab331615e79a62ea68bff76a7f05a607939e2b2a706abeed9c654a7920418f825d3a16215aceec4f99e05629cadad34e5444342de1b5f6b1e73')
+source=("pvr.hdhomerun.tar.gz::https://github.com/kodi-pvr/pvr.hdhomerun/archive/663277de068809110eb54baf805396a5988201c8.tar.gz")
+sha512sums=('b0f2ccbb551b2ddc954c797ca055bc390629a9976f6b71156433d6c7061fd3675af53a5d168473e2603a6be65d19dcc331e98ae25d08b2b01a9dec7488fda18b')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.hdhomerun-615235927e19e5b4252b100467fe99f71c95c528"
+  cd "$srcdir/pvr.hdhomerun-663277de068809110eb54baf805396a5988201c8"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.hdhomerun-615235927e19e5b4252b100467fe99f71c95c528/build"
+  cd "$srcdir/pvr.hdhomerun-663277de068809110eb54baf805396a5988201c8/build"
   make DESTDIR="$pkgdir" install
 }
