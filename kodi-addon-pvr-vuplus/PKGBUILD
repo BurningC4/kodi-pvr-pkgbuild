@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-vuplus
 pkgbase=${pkgname}
 pkgver=19.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Kodi's VuPlus client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.vuplus"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.vuplus.tar.gz::https://github.com/kodi-pvr/pvr.vuplus/archive/e7f617fc72b5a020c5d972747bbea1f9326cd7a5.tar.gz")
-sha512sums=('1e1e3fa4f7ea162045fa5c39c9df9eeaa47c4c62eb4bc6b12ed2b0d69db9aaecb26ff9edfef60185a6f6f60235d2afd0b595a06ff4ad05fb905d0560980f4158')
+source=("pvr.vuplus.tar.gz::https://github.com/kodi-pvr/pvr.vuplus/archive/3e9a5481e7a8fd436e76a2a384694d5c969f15b3.tar.gz")
+sha512sums=('f0cfb77d1e24484a1b75dc60d492e224006101b7facc131f95a83f7477851b4c040f53671a394f4ddc7270da3a78b7021a91901cb1d4bd849a023dae20c36fd5')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.vuplus-e7f617fc72b5a020c5d972747bbea1f9326cd7a5"
+  cd "$srcdir/pvr.vuplus-3e9a5481e7a8fd436e76a2a384694d5c969f15b3"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.vuplus-e7f617fc72b5a020c5d972747bbea1f9326cd7a5/build"
+  cd "$srcdir/pvr.vuplus-3e9a5481e7a8fd436e76a2a384694d5c969f15b3/build"
   make DESTDIR="$pkgdir" install
 }
