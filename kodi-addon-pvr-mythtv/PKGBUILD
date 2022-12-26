@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-mythtv
+pkgbase=${pkgname}
+pkgver=5.0.28
+pkgrel=1
+pkgdesc="MythTV PVR for Kodi"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.mythtv"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.mythtv.tar.gz::https://github.com/kodi-pvr/pvr.mythtv/archive/e939e1d728fb46deea0d11092d561d1526c26b6e.tar.gz")
+sha512sums=('989935e6c3dea34eb9dc3f5b8db0e6134591b7100bfa1eaaafea16ad6ae0492d6d322791c998bc00a58343ab06af3fe6def97378cba47afd5ac1b5b175b73739')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.mythtv-e939e1d728fb46deea0d11092d561d1526c26b6e"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.mythtv-e939e1d728fb46deea0d11092d561d1526c26b6e/build"
+  make DESTDIR="$pkgdir" install
+}

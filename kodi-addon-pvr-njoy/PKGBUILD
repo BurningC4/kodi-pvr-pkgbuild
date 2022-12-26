@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-njoy
 pkgbase=${pkgname}
-pkgver=19.0.1
-pkgrel=2
+pkgver=3.4.2
+pkgrel=1
 pkgdesc="Kodi's Njoy N7 client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.njoy"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.njoy.tar.gz::https://github.com/kodi-pvr/pvr.njoy/archive/01d1adc120215b7f1d01286796c4d0dd5b7661b3.tar.gz")
-sha512sums=('4838c225460c06f9e9287779c60adcd25d8d2a010ec009d67678e9f74369eb4d1015cb913ce64205da44626577abe899a63a8ee6255cf3ee80d40e8d92bc2021')
+source=("pvr.njoy.tar.gz::https://github.com/kodi-pvr/pvr.njoy/archive/4467cacf819d7312482635ac45ddd52cd61ab6e0.tar.gz")
+sha512sums=('b8aa9e632b57c8bd01f83a7bdcc60f3a408261890b9e1b859ca874ab4aac823d38799775bcc6771a52f1160f0d8c90013773858dec6c878fb3cef525768d2287')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.njoy-01d1adc120215b7f1d01286796c4d0dd5b7661b3"
+  cd "$srcdir/pvr.njoy-4467cacf819d7312482635ac45ddd52cd61ab6e0"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.njoy-01d1adc120215b7f1d01286796c4d0dd5b7661b3/build"
+  cd "$srcdir/pvr.njoy-4467cacf819d7312482635ac45ddd52cd61ab6e0/build"
   make DESTDIR="$pkgdir" install
 }

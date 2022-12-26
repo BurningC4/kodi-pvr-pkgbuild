@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-argustv
 pkgbase=${pkgname}
-pkgver=19.2.1
-pkgrel=3
+pkgver=3.5.4
+pkgrel=1
 pkgdesc="Kodi's ARGUS TV client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.argustv"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.argustv.tar.gz::https://github.com/kodi-pvr/pvr.argustv/archive/bf50ba908555118881e105b1fbb013cb2b78a25f.tar.gz")
-sha512sums=('01fb7cb95c62446d318dfcfb96dd36759a15aeeeb3681934f0d8fb7be44c34d8e41b549d6c9db007936d9d883c10c9897fd5f328165d19634af9b76842c40d0c')
+source=("pvr.argustv.tar.gz::https://github.com/kodi-pvr/pvr.argustv/archive/83aa1e9c588b80cdef9b2bc062e554b7ba2e609d.tar.gz")
+sha512sums=('5fa738721fe4e10c5f7315ed9ac0d91209f16eedb67538880722484430e4f1f4962c8050174c045d0cc1a43367ae02028122ffd84fe5680d220acca6b4cc8a72')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.argustv-bf50ba908555118881e105b1fbb013cb2b78a25f"
+  cd "$srcdir/pvr.argustv-83aa1e9c588b80cdef9b2bc062e554b7ba2e609d"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.argustv-bf50ba908555118881e105b1fbb013cb2b78a25f/build"
+  cd "$srcdir/pvr.argustv-83aa1e9c588b80cdef9b2bc062e554b7ba2e609d/build"
   make DESTDIR="$pkgdir" install
 }
