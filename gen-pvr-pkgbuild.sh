@@ -3,7 +3,7 @@
 pushd $(dirname "$(realpath "${BASH_SOURCE[0]}")") > /dev/null
 
 mkdir temp
-KODI_RELEASE=$(curl -s -H "Accept: application/vnd.github.v3+json" 'https://api.github.com/repos/xbmc/xbmc/releases/latest' | jq -r .target_commitish)
+KODI_RELEASE=$(curl -s -H "Accept: application/vnd.github.v3+json" 'https://api.github.com/repos/xbmc/xbmc/releases/latest' | jq -r .tag_name | cut -d '-' -f 2)
 echo "Latest Kodi release is $KODI_RELEASE"
 curl -s -H "Accept: application/vnd.github.v3+json" -o temp/repos.json https://api.github.com/orgs/kodi-pvr/repos
 
