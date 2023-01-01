@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-demo
 pkgbase=${pkgname}
-pkgver=3.6.1
+pkgver=19.0.2
 pkgrel=1
 pkgdesc="Demo PVR for Kodi"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.demo.tar.gz::https://github.com/kodi-pvr/pvr.demo/archive/964686dc47e3945b7992caf220beba2c16331111.tar.gz")
-sha512sums=('8cd425c23bd40532b48587c78c1db741c1050777c3262d18013c1f3135dab0bcfbad87fe93d9b80fbdb57b4be223f5d1f2ff61ca6a1a6c42b4c5b61e120966a0')
+source=("pvr.demo.tar.gz::https://github.com/kodi-pvr/pvr.demo/archive/34e7af1c064dd70018067bbd24d5909813cddf5f.tar.gz")
+sha512sums=('c1cf2b3f98be0688348806be679515644df3d40206d9bde2e9c6412b3c695fa45191ae1067f305f12029efedd051709720fa7490e78d4e156af46a4bddc30bc9')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.demo-964686dc47e3945b7992caf220beba2c16331111"
+  cd "$srcdir/pvr.demo-34e7af1c064dd70018067bbd24d5909813cddf5f"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.demo-964686dc47e3945b7992caf220beba2c16331111/build"
+  cd "$srcdir/pvr.demo-34e7af1c064dd70018067bbd24d5909813cddf5f/build"
   make DESTDIR="$pkgdir" install
 }
