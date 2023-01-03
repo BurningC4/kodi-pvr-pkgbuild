@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-iptvsimple
+pkgbase=${pkgname}
+pkgver=19.2.2
+pkgrel=1
+pkgdesc="Kodi: IPTV Simple client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.iptvsimple"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.iptvsimple.tar.gz::https://github.com/kodi-pvr/pvr.iptvsimple/archive/1bfda6816084e098aadeb4f69aa45d9f777a523f.tar.gz")
+sha512sums=('35b4f13d2ce47af8beacb02babd81b6a478e25c663de45ee3031b7c6155df7f5ea5af5cc7dba10b839ce70d399af57e89fedf1271d3ffc20199976946175d7f7')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.iptvsimple-1bfda6816084e098aadeb4f69aa45d9f777a523f"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.iptvsimple-1bfda6816084e098aadeb4f69aa45d9f777a523f/build"
+  make DESTDIR="$pkgdir" install
+}
