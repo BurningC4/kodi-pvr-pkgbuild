@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-pctv
 pkgbase=${pkgname}
-pkgver=19.0.1
+pkgver=20.4.0
 pkgrel=1
 pkgdesc="Kodi's PCTV client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.pctv.tar.gz::https://github.com/kodi-pvr/pvr.pctv/archive/d21c2092628f190b5312bbbe4d37f886c5c7f73b.tar.gz")
-sha512sums=('9a3735db02cdf69b6a1edada414ea178594441a032d42dddcd51d9dc7ac7f4b6cffd89d8ec26f1480aaa078a4a335f2efeb2032cc77a08d40e4d4bb35bf7412b')
+source=("pvr.pctv.tar.gz::https://github.com/kodi-pvr/pvr.pctv/archive/0869e901ecb7b8b07569bdbd29acc0e1b7d2d475.tar.gz")
+sha512sums=('278a98b8b57fffcb9b5e17ab65633db325c0a3532ad54f1009b8918b0e603ac66e5002337c53813ae82b5baa8332c18719236eec15e119d72617c2f0f160ae13')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.pctv-d21c2092628f190b5312bbbe4d37f886c5c7f73b"
+  cd "$srcdir/pvr.pctv-0869e901ecb7b8b07569bdbd29acc0e1b7d2d475"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.pctv-d21c2092628f190b5312bbbe4d37f886c5c7f73b/build"
+  cd "$srcdir/pvr.pctv-0869e901ecb7b8b07569bdbd29acc0e1b7d2d475/build"
   make DESTDIR="$pkgdir" install
 }
