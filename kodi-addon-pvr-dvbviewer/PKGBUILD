@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-dvbviewer
+pkgbase=${pkgname}
+pkgver=20.4.0
+pkgrel=1
+pkgdesc="Kodi's DVBViewer client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.dvbviewer"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.dvbviewer.tar.gz::https://github.com/kodi-pvr/pvr.dvbviewer/archive/589bd2e9a80f691afce528a354a1c959f2981e30.tar.gz")
+sha512sums=('8f8c3e7260da94a52b8edf6da5d9073649b590080c177904ee129cda23e5667eced6924a708872c4a665ec589f58cb26c7e98e81824183ff8f2fd23cecc2eb8c')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.dvbviewer-589bd2e9a80f691afce528a354a1c959f2981e30"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.dvbviewer-589bd2e9a80f691afce528a354a1c959f2981e30/build"
+  make DESTDIR="$pkgdir" install
+}
