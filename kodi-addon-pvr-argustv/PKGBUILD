@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.argustv.tar.gz::https://github.com/kodi-pvr/pvr.argustv/archive/a0d0e3c6f4fba16cf2256b58ade58e0a46d7e99d.tar.gz")
-sha512sums=('816d907deeb90a13127d845cd4f908d459c415f74995e9e1901d1142ffffade30227c82ae7a0068cc367cd91838742e15e85986697ed18a38f6f76e550769eb1')
+sha512sums=('1deb86ff624121fff041a8e8cad167a77eaae42b29f58234a22b83d9d8b9d85165d8e05123858fad45a349f92cd77a3232e378d10a2e0c6bda0616d3489bc21b')
 
 _prefix='/usr'
 

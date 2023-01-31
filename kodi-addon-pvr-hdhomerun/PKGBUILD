@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-hdhomerun
+pkgbase=${pkgname}
+pkgver=20.4.0
+pkgrel=1
+pkgdesc="Kodi's HDHomeRun client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.hdhomerun"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.hdhomerun.tar.gz::https://github.com/kodi-pvr/pvr.hdhomerun/archive/0dd7a6278eecd2f87d883955e1751946a88dab16.tar.gz")
+sha512sums=('8b7c7decf4f19ae4f74800a6cbe028282984d417864b591276870a740db591aab7a054386f721a9b5be2170140bd2226e31b9ba3f3d99c1d3dfe6ed659810ec4')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.hdhomerun-0dd7a6278eecd2f87d883955e1751946a88dab16"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.hdhomerun-0dd7a6278eecd2f87d883955e1751946a88dab16/build"
+  make DESTDIR="$pkgdir" install
+}
