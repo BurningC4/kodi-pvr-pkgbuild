@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.dvblink.tar.gz::https://github.com/kodi-pvr/pvr.dvblink/archive/1590d0bd9c946d36c5843c73792d074611f6676b.tar.gz")
-sha512sums=('a2284584df1a12852b0e8c02e8ce4b523bcc98b37cf75d20a6d9ff224c8d6b2690e557ccaf6b8952c17d330afe9806d1565f98d791a1a16da5a6c4ec11551ec6')
+sha512sums=('d080a2ad1c1523fba3b56ad11b49bf1917487b737455d64cbd2fb96a2be358ba7aabcd12c1b96d34bc4d4d4e49f4dd47aefa10dd66fa9bcd0695d105ddbb9ed7')
 
 _prefix='/usr'
 

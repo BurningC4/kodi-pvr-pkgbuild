@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.plutotv.tar.gz::https://github.com/kodi-pvr/pvr.plutotv/archive/a93e3d80e08b6eb000b6c874f5b76d6cba7faab8.tar.gz")
-sha512sums=('186b80038ea0945a50538d08443fabe9e843f8908fea919644224fa5d99291d0220e39bde2bf28a3c29edbb2886f5b294a0cd3b7ca029a444b3cefec6c66626c')
+sha512sums=('f6b96e29dece87ccfd88b57f4112948fa5d0f2b19e226be8f2c32f1fc42b66066230db32b833b566c8d8fc1959706ac2044eff5fe7cd70689a14cd1e55dba819')
 
 _prefix='/usr'
 

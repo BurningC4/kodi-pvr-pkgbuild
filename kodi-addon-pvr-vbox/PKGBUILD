@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.vbox.tar.gz::https://github.com/kodi-pvr/pvr.vbox/archive/a9bd99f41fbb8acc6201c36d3f615d97cf376504.tar.gz")
-sha512sums=('c4bfd5cf46b90b77cd123331305629e244320ee294be83f8434d0327d6a1f364123b287a268217f4c99bbf9e1f93b6bde4cf53776722cfc704f41d3a1600e988')
+sha512sums=('e88d717174a2dac21e4cb666613b3a5d7d12187f83973c6feccf3cc15d435676589f71a8f24583f2e941d502faf891627dc138e90106ca5d1d78553f9ee63a48')
 
 _prefix='/usr'
 

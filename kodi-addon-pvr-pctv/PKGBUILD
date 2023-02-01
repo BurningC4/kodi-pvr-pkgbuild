@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.pctv.tar.gz::https://github.com/kodi-pvr/pvr.pctv/archive/0869e901ecb7b8b07569bdbd29acc0e1b7d2d475.tar.gz")
-sha512sums=('d68d9cf65effd92743b05d7efe4db878070d3caa013815c591e9aaf14ef958fdc14785ab96b53eedb8bdfeeb9e26930d45cd31d615fff204e8a4314374855c6d')
+sha512sums=('278a98b8b57fffcb9b5e17ab65633db325c0a3532ad54f1009b8918b0e603ac66e5002337c53813ae82b5baa8332c18719236eec15e119d72617c2f0f160ae13')
 
 _prefix='/usr'
 
