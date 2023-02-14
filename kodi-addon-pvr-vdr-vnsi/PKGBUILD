@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-vdr-vnsi
 pkgbase=${pkgname}
 pkgver=20.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Kodi PVR addon VNSI"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.vdr.vnsi"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.vdr.vnsi.tar.gz::https://github.com/kodi-pvr/pvr.vdr.vnsi/archive/ac053c6fc6c937c88a4f7993575f68d8e6fddc45.tar.gz")
-sha512sums=('6aded6cbfce6828e15eb15a47edf5d53b068765a37fb3f013af752ba2e71e654a03d6e04447cf8f544614f1af2da347687d5ca33751481f3416256f853dff3b7')
+source=("pvr.vdr.vnsi.tar.gz::https://github.com/kodi-pvr/pvr.vdr.vnsi/archive/ea145dfb7afc8db2444033c63b2327ec2ae56ddc.tar.gz")
+sha512sums=('47ce84ec185d403f7ade14ba2bb6db972392e31b6472ff6125120cbb63de2307843ad698d0f6edb1ac4542b087f330b4cd0a47862da67444ce7490ec0e0546d5')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.vdr.vnsi-ac053c6fc6c937c88a4f7993575f68d8e6fddc45"
+  cd "$srcdir/pvr.vdr.vnsi-ea145dfb7afc8db2444033c63b2327ec2ae56ddc"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.vdr.vnsi-ac053c6fc6c937c88a4f7993575f68d8e6fddc45/build"
+  cd "$srcdir/pvr.vdr.vnsi-ea145dfb7afc8db2444033c63b2327ec2ae56ddc/build"
   make DESTDIR="$pkgdir" install
 }
