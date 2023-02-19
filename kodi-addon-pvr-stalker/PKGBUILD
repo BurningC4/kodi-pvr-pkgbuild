@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-stalker
+pkgbase=${pkgname}
+pkgver=20.3.1
+pkgrel=1
+pkgdesc="A PVR Client that connects Kodi to Stalker Middleware"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.stalker"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.stalker.tar.gz::https://github.com/kodi-pvr/pvr.stalker/archive/ea8db1abc7cfc937eee86cdb92fb15f044bfa12c.tar.gz")
+sha512sums=('8093f3971c25bddeb57e7dd47025f5d0db77f490327b2d5601a6a029d3cb154359dcc3307ceb973b6f16c8bf40ebbb65378b3fa1a9e3ec7927ca128151fa2b0f')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.stalker-ea8db1abc7cfc937eee86cdb92fb15f044bfa12c"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.stalker-ea8db1abc7cfc937eee86cdb92fb15f044bfa12c/build"
+  make DESTDIR="$pkgdir" install
+}

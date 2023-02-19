@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-mediaportal-tvserver
+pkgbase=${pkgname}
+pkgver=20.3.0
+pkgrel=1
+pkgdesc="Kodi: MediaPortal TVServer client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.mediaportal.tvserver"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.mediaportal.tvserver.tar.gz::https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/ffc3ff726b32d4cdee819f523881c735be0fe50b.tar.gz")
+sha512sums=('d7f5ac156cd63848ae04d906b8fe6e24ba736b4eca14089ad1c01d82ae139444cf43fecfed2deac3927c10fb2ed6b3fd36aa8f9761881a092017f884f85f2943')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.mediaportal.tvserver-ffc3ff726b32d4cdee819f523881c735be0fe50b"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.mediaportal.tvserver-ffc3ff726b32d4cdee819f523881c735be0fe50b/build"
+  make DESTDIR="$pkgdir" install
+}
