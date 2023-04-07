@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-stalker
 pkgbase=${pkgname}
 pkgver=20.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A PVR Client that connects Kodi to Stalker Middleware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.stalker"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.stalker.tar.gz::https://github.com/kodi-pvr/pvr.stalker/archive/edd2b6a181708cc6bb13af62a277d7b9d71bb581.tar.gz")
-sha512sums=('e221bc9ae7c22f3bbc90a2857e88f14e7b30d9688564d043f24a3f1babfd7e2a7e5827a8ee13414d3f365b2712630f6d61ed89dec6fd8d34efbb5c81158336df')
+source=("pvr.stalker.tar.gz::https://github.com/kodi-pvr/pvr.stalker/archive/126e4166dd8b11c3ed4a2206c95789ee6476a5c4.tar.gz")
+sha512sums=('d44e86033cb33d1d395df39a14a4550e9b32e9e10ce40e4d3709ad32bbc2c55c2ec763de4a589f7bb7ae4358ba268ad367b3bb889c5a71f84048d7588f586174')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.stalker-edd2b6a181708cc6bb13af62a277d7b9d71bb581"
+  cd "$srcdir/pvr.stalker-126e4166dd8b11c3ed4a2206c95789ee6476a5c4"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.stalker-edd2b6a181708cc6bb13af62a277d7b9d71bb581/build"
+  cd "$srcdir/pvr.stalker-126e4166dd8b11c3ed4a2206c95789ee6476a5c4/build"
   make DESTDIR="$pkgdir" install
 }
