@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-iptvsimple
 pkgbase=${pkgname}
-pkgver=20.11.0
-pkgrel=4
+pkgver=20.11.1
+pkgrel=1
 pkgdesc="IPTV Simple client for Kodi PVR"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.iptvsimple"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.iptvsimple.tar.gz::https://github.com/kodi-pvr/pvr.iptvsimple/archive/4f97b2177f7a8f04c647cd7407252cb0c306c090.tar.gz")
-sha512sums=('d93a630e813229646febd80e1a70c12e1c8b053dc972c1a98c48caed90bbeba1cc68dd44cd67d5e350560790002660da94b792afec5db96445d056a56e467747')
+source=("pvr.iptvsimple.tar.gz::https://github.com/kodi-pvr/pvr.iptvsimple/archive/d26a305395cf99fcfad99185f09527f05a715ab7.tar.gz")
+sha512sums=('7c14d84e076a488214b38a8eeadadf640566af88a80889b6a60c158f4761fd1bc7e12c890a0f97ff1f431ce98b2f6970c695a0e96476746b68daa0b79fd01261')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.iptvsimple-4f97b2177f7a8f04c647cd7407252cb0c306c090"
+  cd "$srcdir/pvr.iptvsimple-d26a305395cf99fcfad99185f09527f05a715ab7"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.iptvsimple-4f97b2177f7a8f04c647cd7407252cb0c306c090/build"
+  cd "$srcdir/pvr.iptvsimple-d26a305395cf99fcfad99185f09527f05a715ab7/build"
   make DESTDIR="$pkgdir" install
 }
