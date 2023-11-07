@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-plutotv
 pkgbase=${pkgname}
 pkgver=20.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Pluto.tv PVR Client for Kodi"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.plutotv"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.plutotv.tar.gz::https://github.com/kodi-pvr/pvr.plutotv/archive/b00c642f86bd72b48bcaeff1c8be40d8d6d9185a.tar.gz")
-sha512sums=('021af737f322f7d807315bf4092d48fac06e6be884894deae4106889944faa416e890c54b3dce28c74bd323dce3fa5862bf47967559ca9322c28cd17ccc65b75')
+source=("pvr.plutotv.tar.gz::https://github.com/kodi-pvr/pvr.plutotv/archive/4449c8002f63da4b29ad98f184deb8ac4bf5361a.tar.gz")
+sha512sums=('96d3b4c44f0ec8af12234fa5386340d1d111d50451d5b199789ae5721a0a7b35c2f11b60794234597d623cc54a6ebb503e0dabe0358630d13d37e46c05170773')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.plutotv-b00c642f86bd72b48bcaeff1c8be40d8d6d9185a"
+  cd "$srcdir/pvr.plutotv-4449c8002f63da4b29ad98f184deb8ac4bf5361a"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.plutotv-b00c642f86bd72b48bcaeff1c8be40d8d6d9185a/build"
+  cd "$srcdir/pvr.plutotv-4449c8002f63da4b29ad98f184deb8ac4bf5361a/build"
   make DESTDIR="$pkgdir" install
 }
