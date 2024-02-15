@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-vuplus
+pkgbase=${pkgname}
+pkgver=20.5.1
+pkgrel=1
+pkgdesc="Kodi's Enigma2 client add-on"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.vuplus"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.vuplus.tar.gz::https://github.com/kodi-pvr/pvr.vuplus/archive/a92815361aaf80e734a0cec24c02c22f6806203a.tar.gz")
+sha512sums=('5b5bc2f2c04efa43796071a9c454cbc7e48a7cdf62879b5073228d804bfeff5d548bcfd258e8e69a7fce774722ce7a42532a2993e2a1d12a7b284fca6c86a11d')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.vuplus-a92815361aaf80e734a0cec24c02c22f6806203a"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.vuplus-a92815361aaf80e734a0cec24c02c22f6806203a/build"
+  make DESTDIR="$pkgdir" install
+}

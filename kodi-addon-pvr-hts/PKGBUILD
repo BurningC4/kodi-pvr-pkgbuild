@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-hts
+pkgbase=${pkgname}
+pkgver=20.7.0
+pkgrel=1
+pkgdesc="Kodi's Tvheadend HTSP client addon"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.hts"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.hts.tar.gz::https://github.com/kodi-pvr/pvr.hts/archive/c6254927431a29c6e5e91bc958586fb550386d3a.tar.gz")
+sha512sums=('860a0a319fdfa6f6a44208f1b9afe46c8b3c6c6db875136e3b6591a6ab5b0cdb8290f4d028350d797ba5f3964b74f3e2250f60cf43b5405b28f276c20f07a5b7')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.hts-c6254927431a29c6e5e91bc958586fb550386d3a"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.hts-c6254927431a29c6e5e91bc958586fb550386d3a/build"
+  make DESTDIR="$pkgdir" install
+}
