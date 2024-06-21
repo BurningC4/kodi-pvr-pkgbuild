@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-mediaportal-tvserver
 pkgbase=${pkgname}
-pkgver=20.3.0
-pkgrel=3
+pkgver=21.0.2
+pkgrel=1
 pkgdesc="Kodi: MediaPortal TVServer client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.mediaportal.tvserver"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.mediaportal.tvserver.tar.gz::https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/36b94268394ad23c911953dc4fa99389f85f6ce8.tar.gz")
-sha512sums=('443a02ac89f21697b74081dab11e710a46218c720437406d6ce726e207e6d975c93a687635eddfc8b6b1e4108c27ef1573194abef897a7b5272f4cea90664032')
+source=("pvr.mediaportal.tvserver.tar.gz::https://github.com/kodi-pvr/pvr.mediaportal.tvserver/archive/800078da9668264bd67990c9205c537a1710b783.tar.gz")
+sha512sums=('6c75e3910af7d87c5ae35144a8ed16927b96a0574410f3c181d8016c20277117c3affcc31ec6bdc95ee2c21b6ddc5119aecdde81e457155a75d599ee2a1293be')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.mediaportal.tvserver-36b94268394ad23c911953dc4fa99389f85f6ce8"
+  cd "$srcdir/pvr.mediaportal.tvserver-800078da9668264bd67990c9205c537a1710b783"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.mediaportal.tvserver-36b94268394ad23c911953dc4fa99389f85f6ce8/build"
+  cd "$srcdir/pvr.mediaportal.tvserver-800078da9668264bd67990c9205c537a1710b783/build"
   make DESTDIR="$pkgdir" install
 }
