@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-vbox
 pkgbase=${pkgname}
-pkgver=21.1.3
-pkgrel=2
+pkgver=21.1.4
+pkgrel=1
 pkgdesc="Kodi VBox TV Gateway PVR addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.vbox"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.vbox.tar.gz::https://github.com/kodi-pvr/pvr.vbox/archive/8f5c0fe750741cd873d589282ab0fd9793e9c11b.tar.gz")
-sha512sums=('d76c38e6f4b5f73e51e81c680155ed90ba5b9eef7fbbb1c27c1df93d61de6558fa900375528a9aa9116259886d2307c3ff37dc5c68c236ac8bb798c624a90391')
+source=("pvr.vbox.tar.gz::https://github.com/kodi-pvr/pvr.vbox/archive/3cd7c19d9b8557a977a0ebfbec1fe82227f6340a.tar.gz")
+sha512sums=('b36c20ded7f675bb33380b496e4945d113469b1d05daa88ee095e8a4a4c484bf341e7d1a296b474923f80ecdbf33eee810279893a1f0715d8fb7022a42344a37')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.vbox-8f5c0fe750741cd873d589282ab0fd9793e9c11b"
+  cd "$srcdir/pvr.vbox-3cd7c19d9b8557a977a0ebfbec1fe82227f6340a"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.vbox-8f5c0fe750741cd873d589282ab0fd9793e9c11b/build"
+  cd "$srcdir/pvr.vbox-3cd7c19d9b8557a977a0ebfbec1fe82227f6340a/build"
   make DESTDIR="$pkgdir" install
 }

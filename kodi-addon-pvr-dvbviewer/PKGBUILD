@@ -2,8 +2,8 @@
 
 pkgname=kodi-addon-pvr-dvbviewer
 pkgbase=${pkgname}
-pkgver=21.1.1
-pkgrel=2
+pkgver=21.1.2
+pkgrel=1
 pkgdesc="Kodi's DVBViewer client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.dvbviewer"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.dvbviewer.tar.gz::https://github.com/kodi-pvr/pvr.dvbviewer/archive/95cd8b6e2a806d022e31b4066d1a17cedcf7e1a2.tar.gz")
-sha512sums=('c13a51635a79696d75931e4ae3de3c8bdcceccd32f209a3875b737e78a649ed6f9f1319e28ad7606a29e949db7b5f8659d76516d4255598bed46f5edcd17733a')
+source=("pvr.dvbviewer.tar.gz::https://github.com/kodi-pvr/pvr.dvbviewer/archive/bfee463902d7d997a840cee67bfdda7f7d0e835a.tar.gz")
+sha512sums=('c876eb48b9eb924d0f41ac94cc2934d22c7c54c9e97c91212dcda2df2835f398ed57b9af8c5d79e48e1d19015a868337cb34626de845c81f2b757f658c099c55')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.dvbviewer-95cd8b6e2a806d022e31b4066d1a17cedcf7e1a2"
+  cd "$srcdir/pvr.dvbviewer-bfee463902d7d997a840cee67bfdda7f7d0e835a"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.dvbviewer-95cd8b6e2a806d022e31b4066d1a17cedcf7e1a2/build"
+  cd "$srcdir/pvr.dvbviewer-bfee463902d7d997a840cee67bfdda7f7d0e835a/build"
   make DESTDIR="$pkgdir" install
 }

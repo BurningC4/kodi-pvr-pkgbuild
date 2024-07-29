@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-rtlradio
 pkgbase=${pkgname}
 pkgver=21.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtek RTL2832U RTL-SDR Radio PVR Client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.rtlradio"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.rtlradio.tar.gz::https://github.com/kodi-pvr/pvr.rtlradio/archive/4e16c94fc6d88cf51c752359c4ea6a1fa48b0aa2.tar.gz")
-sha512sums=('0901e01a88540e232eeeec74b981d28b011060040543d8dce1070e16d883b94c782e59652f77eb151a91080eb949f3179e3f59f82d6cb53c8bacc405f9ac0f25')
+source=("pvr.rtlradio.tar.gz::https://github.com/kodi-pvr/pvr.rtlradio/archive/970b9d7a936931ad7d8ef5ebf6702354fa001cff.tar.gz")
+sha512sums=('ad4a95d28200cd58007da0ee5a423cd55a4f04db8a489e491f17c63e5950b97a62f8c3f14dfac526065dbef68d2a4325e478dde441d384d3427eaaf56af6756d')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.rtlradio-4e16c94fc6d88cf51c752359c4ea6a1fa48b0aa2"
+  cd "$srcdir/pvr.rtlradio-970b9d7a936931ad7d8ef5ebf6702354fa001cff"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.rtlradio-4e16c94fc6d88cf51c752359c4ea6a1fa48b0aa2/build"
+  cd "$srcdir/pvr.rtlradio-970b9d7a936931ad7d8ef5ebf6702354fa001cff/build"
   make DESTDIR="$pkgdir" install
 }
