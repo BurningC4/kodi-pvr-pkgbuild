@@ -2,7 +2,7 @@
 
 pkgname=kodi-addon-pvr-nextpvr
 pkgbase=${pkgname}
-pkgver=21.2.0
+pkgver=21.3.0
 pkgrel=1
 pkgdesc="Kodi's NextPVR client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.nextpvr.tar.gz::https://github.com/kodi-pvr/pvr.nextpvr/archive/7b372f6fceada75cb578841c3d1acbb361ddcb8d.tar.gz")
-sha512sums=('783d4d3deaaee831c99323fd0c463cab42ca84120530ca922a1badf459b884a990a9897d4045491c329bf73b391cb930ef65b8360cdb57216003d11639b4ca68')
+source=("pvr.nextpvr.tar.gz::https://github.com/kodi-pvr/pvr.nextpvr/archive/f8d5645b0f8cb19c5611b2d05d34f98902950264.tar.gz")
+sha512sums=('0e5d076f85acef9f0cc7f5acbd3005be7ae32a00b37410de9bf391fdfbed1acb1d8cff38b395ea0b46c5c64eaf51edf2c7384b8b974f622126a5615bf2f3f7b1')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.nextpvr-7b372f6fceada75cb578841c3d1acbb361ddcb8d"
+  cd "$srcdir/pvr.nextpvr-f8d5645b0f8cb19c5611b2d05d34f98902950264"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.nextpvr-7b372f6fceada75cb578841c3d1acbb361ddcb8d/build"
+  cd "$srcdir/pvr.nextpvr-f8d5645b0f8cb19c5611b2d05d34f98902950264/build"
   make DESTDIR="$pkgdir" install
 }
