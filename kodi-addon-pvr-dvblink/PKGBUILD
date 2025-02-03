@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-dvblink
 pkgbase=${pkgname}
 pkgver=21.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Kodi's DVBLink client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.dvblink"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.dvblink.tar.gz::https://github.com/kodi-pvr/pvr.dvblink/archive/1da3fd0e615277c3aa1cce68989fb0a0a3e4f3ad.tar.gz")
-sha512sums=('b4ff824db512c2ce46b946b2b8364cc959c782feeeb52b62f11c476ddb2aa1b425fadba266506d8402476a7358015242654c8d4fd35721275c97947cb6995a97')
+source=("pvr.dvblink.tar.gz::https://github.com/kodi-pvr/pvr.dvblink/archive/dbd5d5092b4a3207dda2b7d1e6ba9e51523ada1d.tar.gz")
+sha512sums=('b8433f916d43dcca48ceaba1e2e1f6e388e6e4ba3afac90cc81032f5184b4d711f9c5181d86355943593a3c446331d98eeedfb1097127e9c85fc02ec26b66483')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.dvblink-1da3fd0e615277c3aa1cce68989fb0a0a3e4f3ad"
+  cd "$srcdir/pvr.dvblink-dbd5d5092b4a3207dda2b7d1e6ba9e51523ada1d"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.dvblink-1da3fd0e615277c3aa1cce68989fb0a0a3e4f3ad/build"
+  cd "$srcdir/pvr.dvblink-dbd5d5092b4a3207dda2b7d1e6ba9e51523ada1d/build"
   make DESTDIR="$pkgdir" install
 }
