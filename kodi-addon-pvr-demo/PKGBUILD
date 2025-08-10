@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-demo
+pkgbase=${pkgname}
+pkgver=21.0.3
+pkgrel=1
+pkgdesc="Demo PVR for Kodi"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.demo"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.demo.tar.gz::https://github.com/kodi-pvr/pvr.demo/archive/00538edd6628be5e9511d738efaefde165dda8eb.tar.gz")
+sha512sums=('abbedf1fa3bea0803f28abc99a1a4e564c406f52282157691ece0cd59b3a838d3d4b87b4a96f25a6abb0650821b00fe1ee9366803281ac693e895ebaddb11a22')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.demo-00538edd6628be5e9511d738efaefde165dda8eb"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.demo-00538edd6628be5e9511d738efaefde165dda8eb/build"
+  make DESTDIR="$pkgdir" install
+}
