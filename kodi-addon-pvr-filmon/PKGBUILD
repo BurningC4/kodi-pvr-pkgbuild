@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-filmon
 pkgbase=${pkgname}
 pkgver=21.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Kodi's Filmon client addon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.filmon"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.filmon.tar.gz::https://github.com/kodi-pvr/pvr.filmon/archive/8ad6a7e283a6afcc7187eac62412b0d942d14726.tar.gz")
-sha512sums=('145c5b7cd22d6c55011fdecfce89d5ba6a1474a8c3f3516d551fdc87ac2959c7cba9a2d4d99f4b58756075635d93575ce253cad7b3c96f83170620542c7f57d3')
+source=("pvr.filmon.tar.gz::https://github.com/kodi-pvr/pvr.filmon/archive/b2e63f736a10d914a9c42a535740d881043d7c66.tar.gz")
+sha512sums=('c7a08bc494951d1ac26f665868f97c53edb1202446c52017c6bd52612dfe830331f3de2574dff04f1303881355593de7e20a64e41589c8225f145e5a45f906ac')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.filmon-8ad6a7e283a6afcc7187eac62412b0d942d14726"
+  cd "$srcdir/pvr.filmon-b2e63f736a10d914a9c42a535740d881043d7c66"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.filmon-8ad6a7e283a6afcc7187eac62412b0d942d14726/build"
+  cd "$srcdir/pvr.filmon-b2e63f736a10d914a9c42a535740d881043d7c66/build"
   make DESTDIR="$pkgdir" install
 }
