@@ -12,7 +12,7 @@ groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
 source=("pvr.dvbviewer.tar.gz::https://github.com/kodi-pvr/pvr.dvbviewer/archive/0881bf8f6ce98e4ce2188266fb565c2bc9305228.tar.gz")
-sha512sums=('d2cc516f6a72fa3c031f0c56bafd3ece497d71190a4c48c2dd2acfde3e4ad0c6587c419ba99e7c45cc06973542015093ec1e15b80957a0eb1773fa7b130947e5')
+sha512sums=('f34ef98029367df99202b9c78321923e4014847d30efad21c35705eb9d9da018914d5a9f07f067e16bb343f41d63e736ba0a5780ea764a405726bdcf9f3480a8')
 
 _prefix='/usr'
 
