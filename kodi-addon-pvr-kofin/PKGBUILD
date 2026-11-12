@@ -1,0 +1,35 @@
+# Maintainer: BurningC4 <wangweichen1995@hotmail.com>
+
+pkgname=kodi-addon-pvr-kofin
+pkgbase=${pkgname}
+pkgver=21.19.1
+pkgrel=1
+pkgdesc="Jellyfin PVR Client for Kodi"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/kodi-pvr/pvr.kofin"
+license=('GPL')
+groups=('kodi-addons')
+makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
+depends=('kodi' 'p8-platform')
+source=("pvr.kofin.tar.gz::https://github.com/kodi-pvr/pvr.kofin/archive/07a9ca3f897775d931717f943af783d49203a96c.tar.gz")
+sha512sums=('faf5a24acd7b1946f974df70c3b89829eeb467d8335e8cd18f124dc15416d2c0fa7a1ec595824fce5c1d99e2572a1ccf866baacf80624fb44a22e588a3778c78')
+
+_prefix='/usr'
+
+build() {
+  msg "Starting make..."
+
+  cd "$srcdir/pvr.kofin-07a9ca3f897775d931717f943af783d49203a96c"
+  mkdir -p build && pushd build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=$_prefix \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+  popd
+}
+
+package() {
+  cd "$srcdir/pvr.kofin-07a9ca3f897775d931717f943af783d49203a96c/build"
+  make DESTDIR="$pkgdir" install
+}
