@@ -3,7 +3,7 @@
 pkgname=kodi-addon-pvr-kofin
 pkgbase=${pkgname}
 pkgver=21.19.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Jellyfin PVR Client for Kodi"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kodi-pvr/pvr.kofin"
@@ -11,15 +11,15 @@ license=('GPL')
 groups=('kodi-addons')
 makedepends=('cmake' 'kodi-platform' 'git' 'kodi-dev')
 depends=('kodi' 'p8-platform')
-source=("pvr.kofin.tar.gz::https://github.com/kodi-pvr/pvr.kofin/archive/e61e5708f0a89c9328ccc2179de31a45a8842421.tar.gz")
-sha512sums=('c6d2c7478600ae71dc7ac8c139ed1887aa741f987e2a8e4338946777c3c4f102a68a05a78daa7985f7071dfdec1e4731be7937de859b20e0150e6d985efc044d')
+source=("pvr.kofin.tar.gz::https://github.com/kodi-pvr/pvr.kofin/archive/badffe7dd8b74b59db68ac6ac82c99f6c0c6a95c.tar.gz")
+sha512sums=('880198d8fa60c3314339daab95cd99f578d9f2140f0d0c143ecb0580a9c5266292ebd98e15c354090731a37aea8bb38956f8e81cbe5a98fcc4de8dea4fee977b')
 
 _prefix='/usr'
 
 build() {
   msg "Starting make..."
 
-  cd "$srcdir/pvr.kofin-e61e5708f0a89c9328ccc2179de31a45a8842421"
+  cd "$srcdir/pvr.kofin-badffe7dd8b74b59db68ac6ac82c99f6c0c6a95c"
   mkdir -p build && pushd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=$_prefix \
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pvr.kofin-e61e5708f0a89c9328ccc2179de31a45a8842421/build"
+  cd "$srcdir/pvr.kofin-badffe7dd8b74b59db68ac6ac82c99f6c0c6a95c/build"
   make DESTDIR="$pkgdir" install
 }
